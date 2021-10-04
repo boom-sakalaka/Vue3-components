@@ -2,10 +2,12 @@
  * @Author: GZH
  * @Date: 2021-10-04 16:57:32
  * @LastEditors: GZH
- * @LastEditTime: 2021-10-04 17:08:11
+ * @LastEditTime: 2021-10-04 18:23:53
  * @FilePath: \vue3-json-schema-form\lib\types.ts
  * @Description:
  */
+import { PropType } from 'vue'
+
 export enum SchemaTypes {
   'NUMBER' = 'number',
   'INTEGER' = 'integer',
@@ -38,3 +40,17 @@ export interface Schema {
   additionalProperties?: any
   additionalItems?: Schema
 }
+
+export const FiledPropsDefine = {
+  schema: {
+    type: Object as PropType<Schema>,
+    required: true,
+  },
+  value: {
+    required: true,
+  },
+  onChange: {
+    type: Function as PropType<(v: any) => void>,
+    required: true,
+  },
+} as const
