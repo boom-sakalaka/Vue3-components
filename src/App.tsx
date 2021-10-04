@@ -8,8 +8,8 @@ import demos from './demos'
 import SchemaForm from '../lib'
 
 // TODO: 在lib中export
-type Schema = unknown
-type UISchema = unknown
+type Schema = any
+type UISchema = any
 
 function toJson(data: unknown) {
   return JSON.stringify(data, null, 2)
@@ -104,10 +104,10 @@ export default defineComponent({
 
     const classesRef = useStyles()
 
-    // const handleChange = (v: unknown) => {
-    //   demo.data = v
-    //   demo.dataCode = toJson(v)
-    // }
+    const handleChange = (v: unknown) => {
+      demo.data = v
+      demo.dataCode = toJson(v)
+    }
 
     function handleCodeChange(
       filed: 'schema' | 'data' | 'uiSchema',
@@ -176,7 +176,11 @@ export default defineComponent({
               </div>
             </div>
             <div class={classes.form}>
-              <SchemaForm />
+              <SchemaForm
+                schema={demo.schema}
+                onChange={handleChange}
+                value={demo.data}
+              />
               {/* <SchemaForm
                 schema={demo.schema!}
                 uiSchema={demo.uiSchema!}
