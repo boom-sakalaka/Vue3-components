@@ -2,16 +2,18 @@
  * @Author: GZH
  * @Date: 2021-10-04 16:52:07
  * @LastEditors: GZH
- * @LastEditTime: 2021-10-04 17:09:54
+ * @LastEditTime: 2021-10-04 18:09:48
  * @FilePath: \vue3-json-schema-form\lib\SchemaForm.tsx
  * @Description:
  */
 
 import { defineComponent, PropType } from 'vue'
-import { Schema, SchemaTypes } from './types'
+
+import { Schema } from './types'
+
+import SchemaItem from './SchemaItems'
 
 export default defineComponent({
-  name: 'SchemaForm',
   props: {
     schema: {
       type: Object as PropType<Schema>,
@@ -25,16 +27,17 @@ export default defineComponent({
       required: true,
     },
   },
+  name: 'SchemaForm',
   setup(props) {
+    const handleChange = (v: any) => {
+      props.onChange(v)
+    }
+
     return () => {
-      const schema = props.schema
-      const type = schema?.type
-      switch (type) {
-        case SchemaTypes.STRING: {
-          return <input type="text" />
-        }
-      }
-      return <div>this is div</div>
+      const { schema, value } = props
+      return (
+        <SchemaItem schema={schema} value={value} onChange={handleChange} />
+      )
     }
   },
 })
