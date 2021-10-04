@@ -2130,6 +2130,11 @@ ajv-errors@^1.0.0:
   resolved "https://registry.npm.taobao.org/ajv-errors/download/ajv-errors-1.0.1.tgz?cache=0&sync_timestamp=1616886041666&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fajv-errors%2Fdownload%2Fajv-errors-1.0.1.tgz#f35986aceb91afadec4102fbd85014950cefa64d"
   integrity sha1-81mGrOuRr63sQQL72FAUlQzvpk0=
 
+ajv-errors@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.npm.taobao.org/ajv-errors/download/ajv-errors-3.0.0.tgz?cache=0&sync_timestamp=1616886041666&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fajv-errors%2Fdownload%2Fajv-errors-3.0.0.tgz#e54f299f3a3d30fe144161e5f0d8d51196c527bc"
+  integrity sha1-5U8pnzo9MP4UQWHl8NjVEZbFJ7w=
+
 ajv-i18n@^4.1.0:
   version "4.1.0"
   resolved "https://registry.nlark.com/ajv-i18n/download/ajv-i18n-4.1.0.tgz#464b5bfe2c7e44df6af3c7e24cc3f43f74ad5b39"
