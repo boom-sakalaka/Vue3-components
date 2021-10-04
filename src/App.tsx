@@ -1,60 +1,195 @@
-/*
- * @Author: GZH
- * @Date: 2021-10-02 15:11:35
- * @LastEditors: GZH
- * @LastEditTime: 2021-10-04 14:31:04
- * @FilePath: \vue3-json-schema-form\src\App.tsx
- * @Description:
- */
-import { defineComponent, ref, Ref } from 'vue'
-
+import { defineComponent, ref, Ref, reactive, watchEffect } from 'vue'
 import { createUseStyles } from 'vue-jss'
 
 import MonacoEditor from './components/MonacoEditor'
+
+import demos from './demos'
+
+import SchemaForm from '../lib'
+
+// TODO: 在lib中export
+type Schema = unknown
+type UISchema = unknown
+
 function toJson(data: unknown) {
   return JSON.stringify(data, null, 2)
 }
 
-const schema = {
-  type: 'string',
-}
-
-const useSytles = createUseStyles({
-  editor: {
+const useStyles = createUseStyles({
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%',
+    width: '1200px',
+    margin: '0 auto',
+  },
+  menu: {
+    marginBottom: 20,
+  },
+  code: {
+    width: 700,
+    flexShrink: 0,
+  },
+  codePanel: {
     minHeight: 400,
+    marginBottom: 20,
+  },
+  uiAndValue: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    '& > *': {
+      width: '46%',
+    },
+  },
+  content: {
+    display: 'flex',
+  },
+  form: {
+    padding: '0 20px',
+    flexGrow: 1,
+  },
+  menuButton: {
+    appearance: 'none',
+    borderWidth: 0,
+    backgroundColor: 'transparent',
+    cursor: 'pointer',
+    display: 'inline-block',
+    padding: 15,
+    borderRadius: 5,
+    '&:hover': {
+      background: '#efefef',
+    },
+  },
+  menuSelected: {
+    background: '#337ab7',
+    color: '#fff',
+    '&:hover': {
+      background: '#337ab7',
+    },
   },
 })
 
-const App = defineComponent({
+export default defineComponent({
   setup() {
-    const shemaRef: Ref<unknown> = ref(schema)
-    const handelCodeChange = (code: string) => {
-      let shema: unknown
-      try {
-        shema = JSON.parse(code)
-      } catch (err) {
-        console.warn(err)
-      }
-      shemaRef.value = shema
-    }
-    const classesRef = useSytles()
-    return () => {
-      const calsses = classesRef.value
+    const selectedRef: Ref<number> = ref(0)
 
-      const code = toJson(shemaRef.value)
+    const demo: {
+      schema: Schema | null
+      data: unknown
+      uiSchema: UISchema | null
+      schemaCode: string
+      dataCode: string
+      uiSchemaCode: string
+    } = reactive({
+      schema: null,
+      data: {},
+      uiSchema: {},
+      schemaCode: '',
+      dataCode: '',
+      uiSchemaCode: '',
+    })
+
+    watchEffect(() => {
+      const index = selectedRef.value
+      const d = demos[index]
+      demo.schema = d.schema
+      demo.data = d.default
+      demo.uiSchema = d.uiSchema
+      demo.schemaCode = toJson(d.schema)
+      demo.dataCode = toJson(d.default)
+      demo.uiSchemaCode = toJson(d.uiSchema)
+    })
+
+    const methodRef: Ref<unknown> = ref()
+
+    const classesRef = useStyles()
+
+    // const handleChange = (v: unknown) => {
+    //   demo.data = v
+    //   demo.dataCode = toJson(v)
+    // }
+
+    function handleCodeChange(
+      filed: 'schema' | 'data' | 'uiSchema',
+      value: string,
+    ) {
+      try {
+        const json = JSON.parse(value)
+        demo[filed] = json
+        ;(demo as any)[`${filed}Code`] = value
+      } catch (err) {
+        // some thing
+      }
+    }
+
+    const handleSchemaChange = (v: string) => handleCodeChange('schema', v)
+    const handleDataChange = (v: string) => handleCodeChange('data', v)
+    const handleUISchemaChange = (v: string) => handleCodeChange('uiSchema', v)
+
+    return () => {
+      const classes = classesRef.value
+      const selected = selectedRef.value
+
+      console.log(methodRef)
 
       return (
-        <div>
-          <MonacoEditor
-            code={code}
-            onChange={handelCodeChange}
-            title="Schema"
-            class={calsses.editor}
-          />
+        // <StyleThemeProvider>
+        // <VJSFThemeProvider theme={theme as unknown}>
+        <div class={classes.container}>
+          <div class={classes.menu}>
+            <h1>Vue3 JsonSchema Form</h1>
+            <div>
+              {demos.map((demo, index) => (
+                <button
+                  class={{
+                    [classes.menuButton]: true,
+                    [classes.menuSelected]: index === selected,
+                  }}
+                  onClick={() => (selectedRef.value = index)}
+                >
+                  {demo.name}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div class={classes.content}>
+            <div class={classes.code}>
+              <MonacoEditor
+                code={demo.schemaCode}
+                class={classes.codePanel}
+                onChange={handleSchemaChange}
+                title="Schema"
+              />
+              <div class={classes.uiAndValue}>
+                <MonacoEditor
+                  code={demo.uiSchemaCode}
+                  class={classes.codePanel}
+                  onChange={handleUISchemaChange}
+                  title="UISchema"
+                />
+                <MonacoEditor
+                  code={demo.dataCode}
+                  class={classes.codePanel}
+                  onChange={handleDataChange}
+                  title="Value"
+                />
+              </div>
+            </div>
+            <div class={classes.form}>
+              <SchemaForm />
+              {/* <SchemaForm
+                schema={demo.schema!}
+                uiSchema={demo.uiSchema!}
+                onChange={handleChange}
+                contextRef={methodRef}
+                value={demo.data}
+              /> */}
+            </div>
+          </div>
         </div>
+        // </VJSFThemeProvider>
+        // </StyleThemeProvider>
       )
     }
   },
 })
-
-export default App
