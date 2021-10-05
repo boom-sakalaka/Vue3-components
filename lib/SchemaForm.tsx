@@ -2,16 +2,17 @@
  * @Author: GZH
  * @Date: 2021-10-04 16:52:07
  * @LastEditors: GZH
- * @LastEditTime: 2021-10-05 15:24:41
+ * @LastEditTime: 2021-10-05 17:23:58
  * @FilePath: \vue3-json-schema-form\lib\SchemaForm.tsx
  * @Description:
  */
 
-import { defineComponent, PropType } from 'vue'
+import { defineComponent, PropType, provide } from 'vue'
 
 import { Schema } from './types'
 
 import SchemaItem from './SchemaItems'
+import { SchemaFormContextKey } from './context'
 
 export default defineComponent({
   props: {
@@ -32,6 +33,12 @@ export default defineComponent({
     const handleChange = (v: any) => {
       props.onChange(v)
     }
+
+    const context: any = {
+      SchemaItem,
+    }
+
+    provide(SchemaFormContextKey, context)
 
     return () => {
       const { schema, value } = props
