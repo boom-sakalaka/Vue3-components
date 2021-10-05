@@ -2,14 +2,15 @@
  * @Author: GZH
  * @Date: 2021-10-04 17:52:39
  * @LastEditors: GZH
- * @LastEditTime: 2021-10-04 18:09:29
+ * @LastEditTime: 2021-10-04 18:28:41
  * @FilePath: \vue3-json-schema-form\lib\SchemaItems.tsx
  * @Description:
  */
 import { defineComponent, PropType } from 'vue'
 
 import { Schema, SchemaTypes } from './types'
-import StringField from './fields/StringField'
+// import StringField from './fields/StringField'
+import StringField from './fields/StringField.vue'
 import NumberField from './fields/NumberField'
 
 export default defineComponent({
