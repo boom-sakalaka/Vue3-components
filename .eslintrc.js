@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2021-10-02 15:11:35
  * @LastEditors: GZH
- * @LastEditTime: 2021-10-05 15:14:27
+ * @LastEditTime: 2021-10-05 15:41:19
  * @FilePath: \vue3-json-schema-form\.eslintrc.js
  * @Description:
  */
@@ -24,10 +24,9 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    '@typescript-eslint/no-var-requires': 0,
-    '@typescript-eslint/no-explicit-any': ['off'],
     '@typescript-eslint/no-use-before-define': 'off',
     'no-prototype-builtins': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
     quotes: 0,
   },
   overrides: [

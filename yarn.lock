@@ -1299,10 +1299,29 @@
     jest-diff "^26.0.0"
     pretty-format "^26.0.0"
 
-"@types/json-schema@^7.0.4", "@types/json-schema@^7.0.5", "@types/json-schema@^7.0.7":
+"@types/json-schema-merge-allof@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.nlark.com/@types/json-schema-merge-allof/download/@types/json-schema-merge-allof-0.6.1.tgz#c476c2aeed04d8a14882ff872de9ddeca5608e0b"
+  integrity sha1-xHbCru0E2KFIgv+HLend7KVgjgs=
+  dependencies:
+    "@types/json-schema" "*"
+
+"@types/json-schema@*", "@types/json-schema@^7.0.4", "@types/json-schema@^7.0.5", "@types/json-schema@^7.0.7":
   version "7.0.9"
   resolved "https://registry.nlark.com/@types/json-schema/download/@types/json-schema-7.0.9.tgz?cache=0&sync_timestamp=1629708116786&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fjson-schema%2Fdownload%2F%40types%2Fjson-schema-7.0.9.tgz#97edc9037ea0c38585320b28964dde3b39e4660d"
   integrity sha1-l+3JA36gw4WFMgsolk3eOznkZg0=
+
+"@types/lodash.union@^4.6.6":
+  version "4.6.6"
+  resolved "https://registry.nlark.com/@types/lodash.union/download/@types/lodash.union-4.6.6.tgz?cache=0&sync_timestamp=1629708236415&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Flodash.union%2Fdownload%2F%40types%2Flodash.union-4.6.6.tgz#2f77f2088326ed147819e9e384182b99aae8d4b0"
+  integrity sha1-L3fyCIMm7RR4GenjhBgrmaro1LA=
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash@*":
+  version "4.14.175"
+  resolved "https://registry.npmmirror.com/@types/lodash/download/@types/lodash-4.14.175.tgz#b78dfa959192b01fae0ad90e166478769b215f45"
+  integrity sha1-t436lZGSsB+uCtkOFmR4dpshX0U=
 
 "@types/mime@^1":
   version "1.3.2"

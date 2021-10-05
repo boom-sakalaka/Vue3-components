@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2021-10-04 16:57:32
  * @LastEditors: GZH
- * @LastEditTime: 2021-10-05 15:13:30
+ * @LastEditTime: 2021-10-05 15:21:53
  * @FilePath: \vue3-json-schema-form\lib\types.ts
  * @Description:
  */
@@ -67,6 +67,10 @@ export const FiledPropsDefine = {
   },
   onChange: {
     type: Function as PropType<(v: any) => void>,
+    required: true,
+  },
+  rootSchema: {
+    type: Object as PropType<Schema>,
     required: true,
   },
 } as const

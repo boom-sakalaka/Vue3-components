@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2021-10-04 16:52:07
  * @LastEditors: GZH
- * @LastEditTime: 2021-10-04 18:09:48
+ * @LastEditTime: 2021-10-05 15:24:41
  * @FilePath: \vue3-json-schema-form\lib\SchemaForm.tsx
  * @Description:
  */
@@ -36,7 +36,12 @@ export default defineComponent({
     return () => {
       const { schema, value } = props
       return (
-        <SchemaItem schema={schema} value={value} onChange={handleChange} />
+        <SchemaItem
+          schema={schema}
+          rootSchema={schema}
+          value={value}
+          onChange={handleChange}
+        />
       )
     }
   },

@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2021-10-04 16:35:36
  * @LastEditors: GZH
- * @LastEditTime: 2021-10-04 18:19:52
+ * @LastEditTime: 2021-10-05 16:26:07
  * @FilePath: \vue3-json-schema-form\src\demos\simple.ts
  * @Description:
  */
@@ -10,7 +10,7 @@ export default {
   name: 'Simple',
   schema: {
     description: 'A simple form example.',
-    type: 'number',
+    type: 'object',
     required: ['firstName', 'lastName'],
     properties: {
       firstName: {
