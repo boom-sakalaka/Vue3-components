@@ -2,7 +2,7 @@
  * @Author: GZH
  * @Date: 2021-10-04 18:24:16
  * @LastEditors: GZH
- * @LastEditTime: 2021-10-05 12:20:19
+ * @LastEditTime: 2021-10-05 14:58:36
  * @FilePath: \vue3-json-schema-form\lib\fields\StringField.vue
  * @Description: 
 -->
@@ -12,7 +12,7 @@
 
 <script lang="ts" setup>
 import { defineProps } from 'vue'
-import { FiledPropsDefine, Schema } from '../types'
+import { FiledPropsDefine } from '../types'
 
 const props = defineProps(FiledPropsDefine)
 

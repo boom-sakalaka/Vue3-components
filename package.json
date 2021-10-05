@@ -16,7 +16,10 @@
     "jss": "^10.8.0",
     "jss-preset-default": "^10.8.0",
     "vue": "^3.0.0",
-    "vue-jss": "^0.0.4"
+    "vue-jss": "^0.0.4",
+    "json-schema-merge-allof": "^0.7.0",
+    "jsonpointer": "^4.1.0",
+    "lodash.union": "^4.6.0"
   },
   "devDependencies": {
     "@types/jest": "^24.0.19",
@@ -37,6 +40,7 @@
     "eslint-plugin-vue": "^7.0.0",
     "lint-staged": "^9.5.0",
     "monaco-editor": "^0.28.1",
+    "monaco-editor-webpack-plugin": "^4.2.0",
     "prettier": "^2.2.1",
     "typescript": "~4.1.5",
     "vue-jest": "^5.0.0-0"
